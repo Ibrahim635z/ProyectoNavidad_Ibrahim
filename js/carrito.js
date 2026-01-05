@@ -148,6 +148,19 @@ export class Carrito {
             contenedor.appendChild(tabla);
 
             // Mostrar el Total Final
+            // Creamos un contenedor para el footer del carrito (total y boton de vaciar)
+            const footerCarrito = document.createElement("div");
+            footerCarrito.style.display = "flex";
+            footerCarrito.style.justifyContent = "space-between";
+            footerCarrito.style.alignItems = "center";
+            footerCarrito.style.marginTop = "20px";
+
+            const totalPrecio = document.createElement("h3");
+            totalPrecio.textContent = `Total: ${this.calcularTotal().toFixed(2)}€`;
+            footerCarrito.appendChild(totalPrecio);
+
+            contenedor.appendChild(footerCarrito);
+
             // Eventos para la tabla cuando se haga click se mira la clase del boton para saber cual esta clickando
             tabla.addEventListener('click', (e) => {
                 if (e.target.classList.contains('btn__sumar')) {
@@ -184,7 +197,9 @@ export class Carrito {
                 this.guardarCarrito();
                 location.reload(); // Recargamos la página para mostrar el carrito vacío
             };
-            contenedor.appendChild(btnVaciar);
+
+            // Añadimos el botón al footer
+            footerCarrito.appendChild(btnVaciar);
 
             // Botón Finalizar Pedido (EmailJS)
             const btnFinalizar = document.createElement("button");
