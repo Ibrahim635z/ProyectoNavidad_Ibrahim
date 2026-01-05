@@ -1,0 +1,1120 @@
+:root {
+    /* Variables globales */
+    --color-principal: #2c8d2c;
+    --color-hover: #216921;
+    --color-fondo-suave: #f9f9f9;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo-suave);
+    color: #333;
+}
+
+/* Container*/
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 3%;
+    gap: 40px;
+    /* Reducido de 80px para que quepan más limpieza */
+    width: 90%;
+    max-width: 1300px;
+    /* Estandarización de monitor */
+    margin: 0 auto;
+    /* Centrado */
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centradas si sobran */
+    align-items: flex-start;
+    /* Evita que crezcan todas si una crece */
+}
+
+/* CardCampo */
+.cardCampo {
+    border: none;
+    /* Quitamos borde feo */
+    background-color: white;
+    /* Fondo blanco */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Sombra moderna */
+    border-radius: 20px;
+    /* Bordes más redondeados */
+    width: 250px;
+    /* Ancho fijo mínimo para consistencia */
+    min-width: 22%;
+    /* Responsive relativo */
+    flex-grow: 1;
+    /* Rellenar huecos */
+    max-width: 300px;
+    /* No hacerse gigantes */
+    height: auto;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.cardCampo:hover {
+    transform: translateY(-10px);
+    /* Levitar al hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    /* Quitamos el cambio de background drástico, mejor algo sutil o mantener blanco */
+    background-color: white;
+
+    /* Opcional: Borde verde sutil */
+    border: 1px solid var(--color-principal);
+}
+
+.cardCampo img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+/* Fin CardCampo */
+
+/* NAV */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* H2 a la izq, Links a la der */
+    padding: 15px 5%;
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Semi-transparente */
+    backdrop-filter: blur(10px);
+    /* Efecto vidrio */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    /* Sombra suave */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-top: 0;
+    /* Quitamos margen superior antiguo */
+    width: 100%;
+}
+
+nav h2 {
+    font-size: 1.8rem;
+    color: var(--color-principal);
+    font-weight: 800;
+    margin: 0;
+    /* Quitamos márgenes antiguos */
+    cursor: default;
+}
+
+nav p {
+    margin: 0 0 0 30px;
+    /* Espacio entre links */
+    /* Espacio entre links */
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    /* Para alinear icono y texto */
+    align-items: center;
+    gap: 8px;
+    /* Espacio entre icono y texto */
+}
+
+nav p i {
+    font-size: 1.2rem;
+}
+
+/* Efecto Hover en Links */
+nav p:hover {
+    color: var(--color-principal);
+}
+
+/* Subrayado animado */
+nav p::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-principal);
+    transition: width 0.3s ease;
+}
+
+nav p:hover::after {
+    width: 100%;
+}
+
+/* Fin NAV */
+
+/* SECCION 1 */
+.seccion1 {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Alineado arriba */
+    padding-top: 50px;
+    /* Ajusta este valor para subir/bajar */
+    align-items: flex-start;
+    /* Alineado a la izquierda */
+    padding-left: 5%;
+    /* Separación del borde izquierdo */
+}
+
+.seccion1 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    animation: fadeInHero 1.5s ease-out;
+}
+
+.seccion1 h3 {
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding-left: 30px;
+    font-size: 2.5rem;
+    /* Un poco más grande para desktop */
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    /* Sombra para leer mejor sobre img */
+}
+
+/* filtro__categoria en Sección 1 */
+.filtro__categoria {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Más opaco para leer mejor */
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: fit-content;
+    /* Se ajusta al contenido */
+}
+
+.filtro__categoria label {
+    font-weight: 600;
+    color: #2c8d2c;
+    font-size: 1.1em;
+}
+
+.filtro__categoria select {
+    padding: 8px 15px;
+    border: 2px solid #2c8d2c;
+    border-radius: 20px;
+    background-color: white;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.filtro__categoria select:hover {
+    background-color: #2c8d2c;
+    color: white;
+}
+
+/* Fin Sección 1 */
+
+/* BOTON ALQUILAR */
+
+.btn__alquilar,
+.btn__detalles {
+    border-radius: 3px;
+    border: none;
+    background-color: #2c8d2c;
+    color: white;
+    padding: 2%;
+    width: 30%;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+
+.btn__alquilar:hover,
+.btn__detalles:hover {
+    cursor: pointer;
+}
+
+/* Fin Boton Alquilar */
+
+/* PERFIL DE USUARIO*/
+
+.container__perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.div__perfil {
+    display: flex;
+    flex-direction: column;
+    /* Stack Title on top */
+    align-items: center;
+    width: 100%;
+    max-width: 750px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.div__perfil:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-top: 5px solid #2c8d2c;
+    /* Cambio borde a top para diseño vertical */
+    border-left: none;
+}
+
+.div__perfil h2 {
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #2c8d2c;
+    padding-bottom: 5px;
+    text-align: center;
+    width: fit-content;
+}
+
+/* Contenedor Cuerpo: Imagen + Info */
+.perfil__body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.perfil__body img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* Redonda para estilo perfil moderno */
+    object-fit: cover;
+    border: 4px solid #2c8d2c;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de Información (Derecha) */
+.perfil__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.perfil__info p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+    text-align: left;
+    background: #f8fcf8;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border-left: 3px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.perfil__info p:hover {
+    border-left-color: #2c8d2c;
+    background: white;
+    transform: translateX(5px);
+}
+
+.perfil__info p strong {
+    color: #2c8d2c;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-right: 5px;
+}
+
+/* Fin Perfil de Usuario */
+
+
+
+/* Carrito */
+
+table thead tr {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+table thead tr th:nth-child(1) {
+    width: 45%;
+    text-align: center;
+}
+
+table td:nth-child(1) {
+    width: 55%;
+}
+
+table td:nth-child(2) {
+    width: 15%;
+    margin-right: 35px;
+}
+
+table td:nth-child(3) {
+    width: 15%;
+    margin-left: 15px;
+}
+
+table td:nth-child(4) {
+    width: 15%;
+    margin-left: 15px;
+}
+
+.container__carrito {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 400px;
+}
+
+.container__carrito h2 {
+    text-align: center;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #2c8d2c;
+    margin-bottom: 30px;
+}
+
+/* ESTILO PARA LOS PRODUCTOS DENTRO DEL CARRITO */
+
+.carrito__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.carrito__item:hover {
+    background-color: #f9f9f9;
+}
+
+
+.carrito__item-nombre {
+    font-weight: bold;
+    color: #333;
+    flex: 10;
+}
+
+.carrito__item-precio {
+    color: #2c8d2c;
+    font-weight: bold;
+    flex: 1;
+    text-align: right;
+}
+
+/* BOTONES DENTRO DEL CARRITO (Eliminar, etc.) */
+.btn__eliminar {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn__eliminar:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* BOTONES SUMAR Y RESTAR */
+.btn__sumar,
+.btn__restar {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn__sumar {
+    background-color: #2c8d2c;
+}
+
+.btn__sumar:hover {
+    background-color: #216921;
+}
+
+.btn__restar {
+    background-color: #777;
+}
+
+.btn__restar:hover {
+    background-color: #555;
+}
+
+/* BOTÓN VACIAR CARRITO */
+.btn__vaciar {
+    background-color: #ff9800;
+    /* Naranja para diferenciar de eliminar(rojo) y finalizar(verde) */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn__vaciar:hover {
+    background-color: #e68900;
+    transform: scale(1.02);
+}
+
+/* SECCIÓN TOTALES */
+.carrito__total {
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: right;
+    border-top: 2px solid #2c8d2c;
+}
+
+.carrito__total h3 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+}
+
+/* BOTÓN FINALIZAR COMPRA */
+.btn__finalizar {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 30px 0 0 auto;
+    background-color: #2c8d2c;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn__finalizar:hover {
+    background-color: #216921;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(44, 141, 44, 0.4);
+}
+
+/* MENSAJE DE CARRITO VACÍO */
+.carrito-vacio {
+    text-align: center;
+    padding: 50px;
+    color: #888;
+    font-style: italic;
+}
+
+/* Fin Carrito */
+
+/* --- SOBRE NOSOTROS --- */
+
+.container__sobre-nosotros {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Sección Misión */
+.div__mision {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.div__mision-texto {
+    flex: 1;
+}
+
+.div__mision-texto h2 {
+    font-size: 2.5rem;
+    color: #2c8d2c;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.div__mision-texto p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+}
+
+.div__mision-imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.div__mision-imagen img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(44, 141, 44, 0.2);
+    transform: rotate(2deg);
+    transition: transform 0.3s ease;
+}
+
+.div__mision-imagen img:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+
+/* Grid Irregular con Grid Template Areas */
+.galeria__imagenes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 15px;
+    grid-template-areas:
+        "area1 area1 area2 area3"
+        "area1 area1 area4 area5"
+        "area6 area7 area7 area8"
+        "area9 area9 area10 area10";
+    animation: fadeIn 1.5s ease-out forwards;
+    /* Animación añadida */
+}
+
+.galeria__imagenes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    filter: brightness(0.9);
+}
+
+.galeria__imagenes img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.img-area-1 {
+    grid-area: area1;
+}
+
+.img-area-2 {
+    grid-area: area2;
+}
+
+.img-area-3 {
+    grid-area: area3;
+}
+
+.img-area-4 {
+    grid-area: area4;
+}
+
+.img-area-5 {
+    grid-area: area5;
+}
+
+.img-area-6 {
+    grid-area: area6;
+}
+
+.img-area-7 {
+    grid-area: area7;
+}
+
+.img-area-8 {
+    grid-area: area8;
+}
+
+.img-area-9 {
+    grid-area: area9;
+}
+
+.img-area-10 {
+    grid-area: area10;
+}
+
+/* Fin Sobre nosotros */
+
+
+
+
+/* Animaciones Simples */
+
+/* Fade In (Usada en primera imagen) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide In desde la izquierda (Aplicada al título h2) */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+nav h2 {
+    animation: slideInLeft 1s ease-out;
+    /* Se mueve al cargar */
+}
+
+/* Latido (Pulse) para llamar la atención (Botón Finalizar) */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn__finalizar {
+    animation: pulse 2s infinite;
+    /* Late infinitamente */
+}
+
+/* Fin Animaciones Simples */
+
+
+/* Estilo para mensaje de fin de resultados */
+/* Animaciones de Transición entre Vistas */
+
+/* Animación Nav desde la derecha */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+nav {
+    animation: slideInRight 1s ease-out;
+    position: relative;
+    /* Para que el slide funcione bien */
+}
+
+/* Animación Hero Image (Sección 1) */
+@keyframes fadeInHero {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.seccion1 img,
+.seccion1 h3,
+.filtro__categoria {
+    animation: fadeInHero 1.2s ease-out forwards;
+}
+
+/* Carrito: Opacidad (fade in simple) */
+@keyframes fadeInOnly {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.container__carrito {
+    animation: fadeInOnly 0.8s ease-out forwards;
+}
+
+
+/* Perfil: Desde abajo (Slide Up) */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container__perfil {
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+/* 3. Sobre Nosotros (Misión): Desde la izquierda */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.div__mision {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+/*    RESPONSIVE   */
+
+/* TABLET (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* 1. CONTAINER */
+    .container {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .cardCampo {
+        width: 45%;
+        /* 2 columnas */
+    }
+
+    /* 2. NAV */
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav h2 {
+        margin: 0 10px;
+    }
+
+
+
+    .filtro__categoria {
+        left: 30%;
+    }
+
+    /* 3. SOBRE NOSOTROS */
+    .div__mision {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .div__mision-texto p {
+        text-align: center;
+    }
+
+    .div__mision-imagen img {
+        transform: rotate(0);
+        width: 100%;
+    }
+
+    .galeria__imagenes {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "area1 area1"
+            "area1 area1"
+            "area2 area3"
+            "area4 area5"
+            "area6 area6"
+            "area7 area7"
+            "area8 area8"
+            "area9 area10";
+        grid-auto-rows: 250px;
+    }
+
+}
+
+/* MOVIL (Hasta 768px) */
+@media (max-width: 768px) {
+
+    /* 1. SECCIÓN 1 (ENCUENTRA TU PARTIDO) */
+    .seccion1 {
+        height: auto;
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #2c8d2c;
+        padding-left: 0;
+        /* Reset de desktop */
+        padding-top: 0;
+        /* Reset de desktop */
+    }
+
+    .seccion1 img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    .seccion1 h3 {
+        position: relative;
+        font-size: 2rem;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        left: 0;
+        transform: none;
+        width: 90%;
+        text-align: center;
+        z-index: 1;
+        top: 10px;
+    }
+
+    .filtro__categoria {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        transform: none;
+        width: 90%;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        margin-bottom: 40px;
+        z-index: 1;
+    }
+
+    .filtro__categoria select,
+    .filtro__categoria label {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    /* 2. NAV */
+    nav {
+        position: relative;
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+        height: auto;
+    }
+
+    nav p {
+        margin: 5px 0;
+        padding: 10px;
+        background-color: var(--color-fondo-suave);
+        width: 100%;
+        text-align: center;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    /* 3. CARDCAMPO */
+    .container {
+        padding: 5%;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .cardCampo {
+        width: 100%;
+        margin-bottom: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 4. PERFIL */
+    .perfil__body {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .perfil__info p {
+        text-align: center;
+    }
+
+    /* 5. CARRITO */
+    .vista-carrito table,
+    .vista-carrito thead,
+    .vista-carrito tbody,
+    .vista-carrito th,
+    .vista-carrito td,
+    .vista-carrito tr {
+        display: block;
+    }
+
+
+
+    .vista-carrito thead {
+        display: none;
+    }
+
+    .carrito__item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #fafafa;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .carrito__item td {
+        border: none;
+        position: relative;
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table td:nth-child(1),
+    table td:nth-child(2),
+    table td:nth-child(3),
+    table td:nth-child(4) {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+    }
+
+    .carrito__item-precio,
+    .carrito__item td:nth-child(3),
+    .carrito__item td:nth-child(4) {
+        text-align: right;
+    }
+
+    .carrito__item td:nth-child(1)::before {
+        content: "Producto:";
+        font-weight: bold;
+        color: #555;
+    }
+
+    .carrito__item td:nth-child(2)::before {
+        content: "Precio:";
+        font-weight: bold;
+        color: #555;
+    }
+
+    .carrito__item td:nth-child(3)::before {
+        content: "Cantidad:";
+        font-weight: bold;
+        color: #555;
+    }
+
+    .carrito__item td:nth-child(4)::before {
+        content: "Subtotal:";
+        font-weight: bold;
+        color: #555;
+    }
+
+    .carrito__item td:last-child {
+        justify-content: center;
+    }
+
+    /* 6. SOBRE NOSOTROS (Heredado) */
+    .div__mision {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .div__mision-texto p {
+        text-align: center;
+    }
+
+    .div__mision-imagen img {
+        transform: rotate(0);
+        width: 100%;
+    }
+
+    .galeria__imagenes {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "area1 area1"
+            "area1 area1"
+            "area2 area3"
+            "area4 area5"
+            "area6 area6"
+            "area7 area7"
+            "area8 area8"
+            "area9 area10";
+        grid-auto-rows: 250px;
+    }
+}
