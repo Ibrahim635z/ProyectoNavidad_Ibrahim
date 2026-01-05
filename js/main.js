@@ -50,13 +50,21 @@ const cargarCampos = async (pagina = 1) => {
             url += `&_sort=${ordenActual.sort}`;
         }
 
+        // CORRECCIÓN: Filtrado en el Servidor
+        // Añadimos el parámetro de categoría a la URL si hay un filtro seleccionado.
+        // Esto soluciona el problema de que carguen menos de 8 elementos.
+        const categoriaActual = filtroCategoria();
+        if (categoriaActual !== "todos") {
+            url += `&categoria=${categoriaActual}`;
+        }
+
         const respuesta = await fetch(url);
         const datos = await respuesta.json();
 
         // En json-server v1 beta, a veces la respuesta viene envuelta en .data, o a veces es directa.
         const campos = datos.data || datos;
 
-        console.log(`Cargando página ${pagina}:`, campos);
+        console.log(`Cargando página ${pagina} (Filtro: ${categoriaActual}):`, campos);
 
         // Si la respuesta está vacía, significa que no hay más datos
         if (campos.length === 0) {
@@ -84,7 +92,7 @@ const cargarCampos = async (pagina = 1) => {
         // Concatenamos los nuevos campos al array global
         todosLosCampos = [...todosLosCampos, ...campos];
 
-        // Llamamos a la función que crea las cards con los NUEVOS campos obtenidos
+
         creaCards(campos);
 
     } catch (error) {
@@ -448,13 +456,16 @@ const filtroCategoria = () => {
 const cargarCamposFiltrados = async () => {
 
     container.innerHTML = "";
-    const valor = filtroCategoria();
-    if (valor === "todos") {
-        cargarCampos();
-    } else {
-        const camposFiltrados = todosLosCampos.filter(campo => campo.categoria === valor);
-        creaCards(camposFiltrados);
-    }
+
+    // CORRECCIÓN: Ahora reseteamos y recargamos SIEMPRE, sea "todos" o una categoría específica.
+    // Al resetear y llamar a cargarCampos, la función se encargará de pedir al servidor
+    // los datos filtrados correctamente, asegurando que vengan en bloques de 8.
+
+    paginaActual = 1;
+    todosLosCampos = [];
+    acabado = false;
+    document.getElementById("loader").textContent = "Cargando más campos...";
+    cargarCampos();
 }
 
 /**

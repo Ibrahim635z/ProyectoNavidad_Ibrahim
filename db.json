@@ -203,7 +203,7 @@
     {
       "id": 3,
       "nombre": "Campo de Futbol 5 - Cartuja",
-      "categoria": "futbol-11",
+      "categoria": "sala",
       "ubicacion": "Calle del Prof. Clavera, 6, Beiro, 18011 Granada",
       "precio": 40,
       "imagen": "./images/Cartuja_Futbol_sala.jpg",
@@ -218,7 +218,7 @@
     {
       "id": 4,
       "nombre": "Campo de Futbol - Cartuja",
-      "categoria": "sala",
+      "categoria": "futbol-11",
       "ubicacion": "Calle del Prof. Clavera, 6, Beiro, 18011 Granada",
       "precio": 32,
       "imagen": "./images/Cartuja_futbol.jpg",
