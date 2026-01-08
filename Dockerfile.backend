@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copiamos el package.json y package-lock.json
+COPY package*.json ./
+
+# Instalamos las dependencias
+RUN npm install
+
+# Copiamos la base de datos
+COPY db.json .
+
+# Exponemos el puerto 3008
+EXPOSE 3008
+
+# Comando para iniciar el servidor (binding a 0.0.0.0 es necesario para Docker)
+CMD ["npx", "json-server", "--watch", "db.json", "--port", "3008", "--host", "0.0.0.0"]

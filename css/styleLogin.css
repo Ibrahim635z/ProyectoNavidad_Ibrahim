@@ -1,0 +1,171 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Variables globales */
+    --color-principal: #2c8d2c;
+    --color-hover: #216921;
+    --color-fondo-suave: #f9f9f9;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo-suave);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    margin-top: 0;
+}
+
+nav h1 {
+    font-size: 2rem;
+    color: var(--color-principal);
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+.main__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    /* Ajustado para el Nav */
+    padding-bottom: 15rem;
+    /* Espacio para que las formas no toquen el formulario */
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 90%;
+    max-width: 350px;
+    /* Formulario más pequeño como pidió el usuario */
+    align-items: center;
+    border: 1px solid #acacac93;
+    box-shadow: 2px 2px 2px 2px #acacac93;
+    height: auto;
+    padding: 2rem;
+    border-radius: 3px;
+    margin-top: 1%;
+    background-color: white;
+    /* Asegurar legibilidad sobre formas */
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    
+}
+
+form button {
+    background-color: #2c8d2c;
+    color: white;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+form button:hover {
+    cursor: pointer;
+    background-color: var(--color-hover);
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input:focus {
+    outline: none;
+    /*quita el borde negro por defecto*/
+    border: 2px solid #2c8d2c;
+}
+
+
+.shape {
+    position: fixed;
+    /* Fixed para que siempre estén abajo en la ventana */
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.6;
+    pointer-events: none;
+    /* Que no molesten al click */
+}
+
+
+.shape__1 {
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background-color: #2c8d2c;
+    clip-path: polygon(0 66%, 0% 100%, 100% 100%);
+}
+
+
+.shape__2 {
+    right: 0;
+    width: 100%;
+    height: 250px;
+    background-color: #2c8d2c;
+    clip-path: polygon(100% 66%, 0% 100%, 100% 100%);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.toggle-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #2c8d2c;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.toggle-link:hover {
+    color: #1e5f1e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav h1 {
+        font-size: 1.5rem;
+    }
+
+    .shape__1,
+    .shape__2 {
+        height: 15rem;
+        /* Formas más pequeñas en móvil */
+    }
+}

@@ -1,0 +1,535 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "a",
+      "password": "a",
+      "role": "admin",
+      "stats": {
+        "games": 8,
+        "wins": 3,
+        "losses": 5,
+        "goals": 1,
+        "assists": 4,
+        "rate": 0
+      }
+    },
+    {
+      "id": "2",
+      "email": "admin@test.com",
+      "password": "123",
+      "role": "admin",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "3",
+      "email": "juan@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "4",
+      "email": "maria@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "5",
+      "email": "pepe@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "6",
+      "email": "lucia@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "7",
+      "email": "carlos@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "8",
+      "email": "ana@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "9",
+      "email": "david@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "10",
+      "email": "elena@test.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "11",
+      "email": "ibrahimchakron94@gmail.com",
+      "password": "1234",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    },
+    {
+      "id": "ee0e",
+      "email": "b",
+      "password": "b",
+      "role": "user",
+      "stats": {
+        "games": 0,
+        "wins": 0,
+        "losses": 0,
+        "goals": 0,
+        "assists": 0,
+        "rate": 0
+      }
+    }
+  ],
+  "campos": [
+    {
+      "id": "1",
+      "nombre": "Campo de Futbol Fuentenueva",
+      "categoria": "futbol-7",
+      "ubicacion": "Paseo Prof. Juan Ossorio, Beiro, 18003 Granada",
+      "precio": 38,
+      "imagen": "./images/fuentenueva.jpg",
+      "descripcion": "Campus Céntrico con Pistas deportivos",
+      "medidas": {
+        "ancho": 70,
+        "largo": 105,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "2",
+      "nombre": "Campo de Futbol Sala Fuentenueva",
+      "categoria": "sala",
+      "ubicacion": "Paseo Prof. Juan Ossorio, 2, Beiro, 18003 Granada",
+      "precio": 25,
+      "imagen": "./images/fuentenueva_sala.jpg",
+      "descripcion": "Pistas Polideportivas",
+      "medidas": {
+        "ancho": 20,
+        "largo": 40,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "3",
+      "nombre": "Campo de Futbol 5 - Cartuja",
+      "categoria": "sala",
+      "ubicacion": "Calle del Prof. Clavera, 6, Beiro, 18011 Granada",
+      "precio": 40,
+      "imagen": "./images/Cartuja_Futbol_sala.jpg",
+      "descripcion": "Campo de futbol 11 y futbol 7",
+      "medidas": {
+        "ancho": 73,
+        "largo": 110,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "4",
+      "nombre": "Campo de Futbol - Cartuja",
+      "categoria": "futbol-11",
+      "ubicacion": "Calle del Prof. Clavera, 6, Beiro, 18011 Granada",
+      "precio": 32,
+      "imagen": "./images/Cartuja_futbol.jpg",
+      "descripcion": "Campo futbol sala de Cesped",
+      "medidas": {
+        "ancho": 22,
+        "largo": 45,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "5",
+      "nombre": "Campo Municipal Las Marismas",
+      "categoria": "futbol-11",
+      "ubicacion": "Calle del Deporte, 4, Madrid",
+      "precio": 50,
+      "imagen": "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Campo de césped natural, ideal para partidos profesionales.",
+      "medidas": {
+        "ancho": 68,
+        "largo": 105,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "6",
+      "nombre": "Polideportivo El Gancho",
+      "categoria": "futbol-7",
+      "ubicacion": "Av. Principal 23, Sevilla",
+      "precio": 35.5,
+      "imagen": "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Césped artificial de última generación.",
+      "medidas": {
+        "ancho": 35,
+        "largo": 55,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "7",
+      "nombre": "Pista Urbana Centro",
+      "categoria": "sala",
+      "ubicacion": "Plaza Mayor s/n, Valencia",
+      "precio": 20,
+      "imagen": "./images/Cartuja_futbol.jpg",
+      "descripcion": "Pista rápida de cemento pulido.",
+      "medidas": {
+        "ancho": 20,
+        "largo": 40,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "8",
+      "nombre": "Estadio Olímpico Norte",
+      "categoria": "futbol-11",
+      "ubicacion": "Av. de la Castellana 200, Madrid",
+      "precio": 85,
+      "imagen": "./images/fuentenueva.jpg",
+      "descripcion": "Estadio completo con gradas y vestuarios de lujo.",
+      "medidas": {
+        "ancho": 70,
+        "largo": 110,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "9",
+      "nombre": "Pabellón Cubierto San Blas",
+      "categoria": "sala",
+      "ubicacion": "Calle Arcos 12, Alicante",
+      "precio": 25,
+      "imagen": "./images/fuentenueva_sala.jpg",
+      "descripcion": "Pista de parquet flotante, excelente agarre.",
+      "medidas": {
+        "ancho": 20,
+        "largo": 40,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "10",
+      "nombre": "Ciudad Deportiva Sur",
+      "categoria": "futbol-7",
+      "ubicacion": "Carretera de Cádiz km 5, Málaga",
+      "precio": 30,
+      "imagen": "./images/Cartuja_Futbol_sala.jpg",
+      "descripcion": "Ideal para ligas amateurs y entrenamientos.",
+      "medidas": {
+        "ancho": 30,
+        "largo": 50,
+        "unidad": "metros"
+      },
+      "disponible": false
+    },
+    {
+      "id": "11",
+      "nombre": "Campo Los Olivos",
+      "categoria": "futbol-11",
+      "ubicacion": "Camino Viejo 88, Jaén",
+      "precio": 45,
+      "imagen": "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Entorno tranquilo rodeado de naturaleza.",
+      "medidas": {
+        "ancho": 65,
+        "largo": 100,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "12",
+      "nombre": "Arena Futsal Pro",
+      "categoria": "sala",
+      "ubicacion": "Calle Industria 4, Barcelona",
+      "precio": 28,
+      "imagen": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Iluminación LED de alta calidad y suelo sintético.",
+      "medidas": {
+        "ancho": 22,
+        "largo": 42,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "13",
+      "nombre": "Complejo El Rayo",
+      "categoria": "futbol-7",
+      "ubicacion": "Av. de la Albufera 10, Madrid",
+      "precio": 38,
+      "imagen": "https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Césped recién renovado. Muy céntrico.",
+      "medidas": {
+        "ancho": 32,
+        "largo": 52,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "14",
+      "nombre": "Estadio La Mina",
+      "categoria": "futbol-11",
+      "ubicacion": "Calle Real 1, Vigo",
+      "precio": 60,
+      "imagen": "https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Campo histórico con césped natural.",
+      "medidas": {
+        "ancho": 68,
+        "largo": 105,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "15",
+      "nombre": "Pista Azul Gracia",
+      "categoria": "sala",
+      "ubicacion": "Travessera de Gràcia, Barcelona",
+      "precio": 22.5,
+      "imagen": "./images/grid/imagen6.jpg",
+      "descripcion": "Pista exterior techada, buena ventilación.",
+      "medidas": {
+        "ancho": 20,
+        "largo": 40,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "16",
+      "nombre": "Polideportivo San Mames",
+      "categoria": "futbol-7",
+      "ubicacion": "Calle Licenciado Poza, Bilbao",
+      "precio": 40,
+      "imagen": "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Instalaciones modernas con calefacción en vestuarios.",
+      "medidas": {
+        "ancho": 35,
+        "largo": 55,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "17",
+      "nombre": "Campo Universitario",
+      "categoria": "futbol-11",
+      "ubicacion": "Campus Norte, Granada",
+      "precio": 35,
+      "imagen": "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Precio especial para estudiantes. Césped artificial.",
+      "medidas": {
+        "ancho": 64,
+        "largo": 100,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "18",
+      "nombre": "Colegio Mayor Sports",
+      "categoria": "sala",
+      "ubicacion": "Av. Complutense, Madrid",
+      "precio": 18,
+      "imagen": "./images/grid/imagen1.jpg",
+      "descripcion": "Pista clásica de colegio, suelo de goma.",
+      "medidas": {
+        "ancho": 18,
+        "largo": 38,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "19",
+      "nombre": "Soccer World Elite",
+      "categoria": "futbol-7",
+      "ubicacion": "Polígono Industrial Oeste, Murcia",
+      "precio": 42,
+      "imagen": "./images/grid/imagen2.jpg",
+      "descripcion": "Campo premium con grabación de partido incluida.",
+      "medidas": {
+        "ancho": 33,
+        "largo": 53,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "20",
+      "nombre": "Campo del Río",
+      "categoria": "futbol-11",
+      "ubicacion": "Ribera del Ebro, Zaragoza",
+      "precio": 55,
+      "imagen": "https://images.unsplash.com/photo-1487466365202-1afdb86c764e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Vistas al río, césped natural muy cuidado.",
+      "medidas": {
+        "ancho": 68,
+        "largo": 105,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "21",
+      "nombre": "Pista Municipal El Palo",
+      "categoria": "sala",
+      "ubicacion": "Calle Mar, Málaga",
+      "precio": 15,
+      "imagen": "./images/grid/imagen3.jpeg",
+      "descripcion": "Pista exterior, ideal para atardeceres.",
+      "medidas": {
+        "ancho": 20,
+        "largo": 40,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "22",
+      "nombre": "Complejo Deportivo Insular",
+      "categoria": "futbol-7",
+      "ubicacion": "Las Palmas de GC",
+      "precio": 32,
+      "imagen": "./images/grid/imagen4.jpg",
+      "descripcion": "Campo rápido y técnico.",
+      "medidas": {
+        "ancho": 30,
+        "largo": 50,
+        "unidad": "metros"
+      },
+      "disponible": false
+    },
+    {
+      "id": "23",
+      "nombre": "Estadio Ciudad de Valencia",
+      "categoria": "futbol-11",
+      "ubicacion": "Calle San Vicente, Valencia",
+      "precio": 90,
+      "imagen": "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Estadio profesional para grandes eventos.",
+      "medidas": {
+        "ancho": 68,
+        "largo": 105,
+        "unidad": "metros"
+      },
+      "disponible": true
+    },
+    {
+      "id": "24",
+      "nombre": "Pabellón Central",
+      "categoria": "sala",
+      "ubicacion": "Plaza España, Valladolid",
+      "precio": 30,
+      "imagen": "https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "descripcion": "Gradas retráctiles y marcador electrónico.",
+      "medidas": {
+        "ancho": 20,
+        "largo": 40,
+        "unidad": "metros"
+      },
+      "disponible": true
+    }
+  ],
+  "reservas": []
+}
