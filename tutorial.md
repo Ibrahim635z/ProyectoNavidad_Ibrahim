@@ -24,6 +24,7 @@ Asegúrate de que este proyecto está subido a tu GitHub y que el repositorio es
 4.  Busca tu repositorio (conecta tu cuenta si no sale) y dale a **"Connect"**.
 5.  **Configuración del Servicio:**
     *   **Name:** `backend-pachangapp` (o lo que quieras).
+    *   **Branch:** Selecciona `feature/despliegue` (IMPORTANTE).
     *   **Region:** Frankfurt (Germany) - Es la más cercana.
     *   **Runtime:** **Docker** (Importante).
     *   **Instance Type:** **Free**.
@@ -52,14 +53,14 @@ Ahora que tienes URL del backend, dile a tu código dónde está.
     ```javascript
     const URL_BACKEND_RENDER = "PON_AQUI_TU_URL_DE_RENDER";
     ```
-3.  Pega ahí tu URL real (sin barra final `|`, solo https://...).
+3.  Pega ahí tu URL real (sin barra final `/`, solo https://...).
     *   Ejemplo: `const URL_BACKEND_RENDER = "https://backend-pachangapp.onrender.com";`
 4.  Guarda los cambios.
-5.  Sube los cambios a GitHub:
+5.  Sube los cambios a tu rama feature:
     ```bash
     git add .
     git commit -m "Configurar URL de produccion"
-    git push origin main
+    git push origin feature/despliegue
     ```
 
 ---
@@ -72,6 +73,7 @@ Ahora que tienes URL del backend, dile a tu código dónde está.
 4.  **Configuración:**
     *   **Framework Preset:** Déjalo en "Other".
     *   **Root Directory:** `./` (déjalo como está).
+    *   **Branch:** IMPORTANTE: En "Production Branch" o en el selector de ramas, asegúrate de elegir `feature/despliegue`.
     *   **Build Command:** Déjalo vacío.
     *   **Output Directory:** Déjalo vacío.
 5.  Dale a **"Deploy"**.

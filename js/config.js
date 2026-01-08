@@ -6,7 +6,7 @@
  */
 
 // ¡¡IMPORTANTE!!: Cuando despliegues el Backend en Render, copia la URL que te den y pégala aquí abajo:
-const URL_BACKEND_RENDER = "PON_AQUI_TU_URL_DE_RENDER"; // Ejemplo: "https://mi-api-navidad.onrender.com"
+const URL_BACKEND_RENDER = "https://backend-pachangapp.onrender.com"; // Ejemplo: "https://mi-api-navidad.onrender.com"
 
 export const API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:3008'
