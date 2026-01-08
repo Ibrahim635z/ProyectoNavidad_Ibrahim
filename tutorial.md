@@ -34,7 +34,7 @@ Asegúrate de que este proyecto está subido a tu GitHub y que el repositorio es
         *   Key: `PORT`
         *   Value: `3008`
     *   *(Esto es vital para que json-server funcione en Render)*.
-7.  **Docker Command**: Déjalo vacío, Render usará tu `Dockerfile`. IMPORTANTE: Render buscará el `Dockerfile` en la raíz. Si tienes `Dockerfile.backend`, ve a "Advanced" y en **"Dockerfile Path"** escribe: `Dockerfile.backend`.
+7.  **Docker Command**: Déjalo vacío, Render usará tu `Dockerfile` automáticamente (ya lo he renombrado por ti).
 8.  Dale a **"Create Web Service"**.
 
 Tardará unos minutos. Cuando termine verás un tick verde y arriba a la izquierda la URL de tu API:
