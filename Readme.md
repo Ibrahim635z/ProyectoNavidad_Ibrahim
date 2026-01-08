@@ -115,3 +115,11 @@ Mapa de las secciones de estilo para navegación rápida.
 10. **RESPONSIVE**:
     *   **Tablet (769px - 1024px)**: Ajustes de grid (2 columnas) y tamaño de fuentes.
     *   **Móvil (< 768px)**: Ajustes a columna única, menús apilados, y reset de paddings.
+
+
+
+
+    por hacer:
+    que sume cuando creas un usuario el id mas alto
+    echar un ojo al captcha
+    mirar que al clickar en registrarse se gire la tarjeta.

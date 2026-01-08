@@ -171,7 +171,7 @@
   ],
   "campos": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Campo de Futbol Fuentenueva",
       "categoria": "futbol-7",
       "ubicacion": "Paseo Prof. Juan Ossorio, Beiro, 18003 Granada",
@@ -186,7 +186,7 @@
       "disponible": true
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Campo de Futbol Sala Fuentenueva",
       "categoria": "sala",
       "ubicacion": "Paseo Prof. Juan Ossorio, 2, Beiro, 18003 Granada",
@@ -201,7 +201,7 @@
       "disponible": true
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Campo de Futbol 5 - Cartuja",
       "categoria": "sala",
       "ubicacion": "Calle del Prof. Clavera, 6, Beiro, 18011 Granada",
@@ -216,7 +216,7 @@
       "disponible": true
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Campo de Futbol - Cartuja",
       "categoria": "futbol-11",
       "ubicacion": "Calle del Prof. Clavera, 6, Beiro, 18011 Granada",
@@ -231,7 +231,7 @@
       "disponible": true
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Campo Municipal Las Marismas",
       "categoria": "futbol-11",
       "ubicacion": "Calle del Deporte, 4, Madrid",
@@ -246,7 +246,7 @@
       "disponible": true
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Polideportivo El Gancho",
       "categoria": "futbol-7",
       "ubicacion": "Av. Principal 23, Sevilla",
@@ -261,7 +261,7 @@
       "disponible": true
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "Pista Urbana Centro",
       "categoria": "sala",
       "ubicacion": "Plaza Mayor s/n, Valencia",
@@ -276,7 +276,7 @@
       "disponible": true
     },
     {
-      "id": 8,
+      "id": "8",
       "nombre": "Estadio Olímpico Norte",
       "categoria": "futbol-11",
       "ubicacion": "Av. de la Castellana 200, Madrid",
@@ -291,7 +291,7 @@
       "disponible": true
     },
     {
-      "id": 9,
+      "id": "9",
       "nombre": "Pabellón Cubierto San Blas",
       "categoria": "sala",
       "ubicacion": "Calle Arcos 12, Alicante",
@@ -306,7 +306,7 @@
       "disponible": true
     },
     {
-      "id": 10,
+      "id": "10",
       "nombre": "Ciudad Deportiva Sur",
       "categoria": "futbol-7",
       "ubicacion": "Carretera de Cádiz km 5, Málaga",
@@ -321,7 +321,7 @@
       "disponible": false
     },
     {
-      "id": 11,
+      "id": "11",
       "nombre": "Campo Los Olivos",
       "categoria": "futbol-11",
       "ubicacion": "Camino Viejo 88, Jaén",
@@ -336,7 +336,7 @@
       "disponible": true
     },
     {
-      "id": 12,
+      "id": "12",
       "nombre": "Arena Futsal Pro",
       "categoria": "sala",
       "ubicacion": "Calle Industria 4, Barcelona",
@@ -351,7 +351,7 @@
       "disponible": true
     },
     {
-      "id": 13,
+      "id": "13",
       "nombre": "Complejo El Rayo",
       "categoria": "futbol-7",
       "ubicacion": "Av. de la Albufera 10, Madrid",
@@ -366,7 +366,7 @@
       "disponible": true
     },
     {
-      "id": 14,
+      "id": "14",
       "nombre": "Estadio La Mina",
       "categoria": "futbol-11",
       "ubicacion": "Calle Real 1, Vigo",
@@ -381,7 +381,7 @@
       "disponible": true
     },
     {
-      "id": 15,
+      "id": "15",
       "nombre": "Pista Azul Gracia",
       "categoria": "sala",
       "ubicacion": "Travessera de Gràcia, Barcelona",
@@ -396,7 +396,7 @@
       "disponible": true
     },
     {
-      "id": 16,
+      "id": "16",
       "nombre": "Polideportivo San Mames",
       "categoria": "futbol-7",
       "ubicacion": "Calle Licenciado Poza, Bilbao",
@@ -411,7 +411,7 @@
       "disponible": true
     },
     {
-      "id": 17,
+      "id": "17",
       "nombre": "Campo Universitario",
       "categoria": "futbol-11",
       "ubicacion": "Campus Norte, Granada",
@@ -426,7 +426,7 @@
       "disponible": true
     },
     {
-      "id": 18,
+      "id": "18",
       "nombre": "Colegio Mayor Sports",
       "categoria": "sala",
       "ubicacion": "Av. Complutense, Madrid",
@@ -441,7 +441,7 @@
       "disponible": true
     },
     {
-      "id": 19,
+      "id": "19",
       "nombre": "Soccer World Elite",
       "categoria": "futbol-7",
       "ubicacion": "Polígono Industrial Oeste, Murcia",
@@ -456,7 +456,7 @@
       "disponible": true
     },
     {
-      "id": 20,
+      "id": "20",
       "nombre": "Campo del Río",
       "categoria": "futbol-11",
       "ubicacion": "Ribera del Ebro, Zaragoza",
@@ -471,7 +471,7 @@
       "disponible": true
     },
     {
-      "id": 21,
+      "id": "21",
       "nombre": "Pista Municipal El Palo",
       "categoria": "sala",
       "ubicacion": "Calle Mar, Málaga",
@@ -486,7 +486,7 @@
       "disponible": true
     },
     {
-      "id": 22,
+      "id": "22",
       "nombre": "Complejo Deportivo Insular",
       "categoria": "futbol-7",
       "ubicacion": "Las Palmas de GC",
@@ -501,7 +501,7 @@
       "disponible": false
     },
     {
-      "id": 23,
+      "id": "23",
       "nombre": "Estadio Ciudad de Valencia",
       "categoria": "futbol-11",
       "ubicacion": "Calle San Vicente, Valencia",
@@ -516,7 +516,7 @@
       "disponible": true
     },
     {
-      "id": 24,
+      "id": "24",
       "nombre": "Pabellón Central",
       "categoria": "sala",
       "ubicacion": "Plaza España, Valladolid",

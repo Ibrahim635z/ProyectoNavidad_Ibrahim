@@ -1,4 +1,5 @@
 import { Carrito } from "./carrito.js";
+import { API_URL } from "./config.js";
 
 // Variables Globales
 let todosLosCampos = [];
@@ -43,7 +44,7 @@ const cargarCampos = async (pagina = 1) => {
 
     try {
         // Construimos la URL con paginación y ordenamiento por defecto
-        let url = `http://localhost:3008/campos?_page=${pagina}&_per_page=${elementosPorPagina}`;
+        let url = `${API_URL}/campos?_page=${pagina}&_per_page=${elementosPorPagina}`;
 
         if (ordenActual.sort) {
             // json-server v1 usa _sort (con - para descender)
@@ -71,6 +72,7 @@ const cargarCampos = async (pagina = 1) => {
             acabado = true;
             const loader = document.getElementById("loader");
             loader.textContent = "No hay más resultados.";
+            loader.style = "color: green; text-align: center; color: #2c8d2c";
             loader.classList.add("mensaje-fin");
             return;
         }
@@ -84,6 +86,7 @@ const cargarCampos = async (pagina = 1) => {
                 acabado = true;
                 const loader = document.getElementById("loader");
                 loader.textContent = "No hay más resultados.";
+                loader.style = "color: green; text-align: center; color: #2c8d2c";
                 loader.classList.add("mensaje-fin");
                 return;
             }
@@ -282,7 +285,7 @@ const cardPerfil = async () => {
         const usuarioActual = JSON.parse(sessionStorage.getItem("user")); // session storage es una cadena de texto debo usar JSON.parse para tratarla como un array de objetos
 
         //accedo a los datos del usuario actual para obtener sus stats
-        const usuarios = await fetch("http://localhost:3008/users");
+        const usuarios = await fetch(`${API_URL}/users`);
         const usuariosJson = await usuarios.json();
         const usuario = usuariosJson.find(user => user.id === usuarioActual.id);
 
