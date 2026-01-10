@@ -17,7 +17,7 @@ const miCarrito = new Carrito();
 
 /**
  * Comprueba si el usuario está logueado
- * @returns 
+ * @returns {void}
  */
 const compruebaUsuario = () => {
 
