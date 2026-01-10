@@ -46,7 +46,7 @@ services:
       - backend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`pachangapp.es`)"
+      - "traefik.http.routers.frontend.rule=Host(`pachangapp.es`) || Host(`www.pachangapp.es`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
