@@ -1,32 +1,139 @@
-name: Deploy to VPS
+name: Deploy to AWS EC2
 
 on:
   push:
     branches:
       - main
+      - 'features/despliegue'
   workflow_dispatch:
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker (Frontend)
+        id: meta-frontend
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-frontend
+          tags: |
+            type=raw,value=latest
+            type=sha
+
+      - name: Extract metadata (tags, labels) for Docker (Backend)
+        id: meta-backend
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-backend
+          tags: |
+            type=raw,value=latest
+            type=sha
+
+      - name: Build and push Frontend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile.frontend
+          push: true
+          tags: ${{ steps.meta-frontend.outputs.tags }}
+          labels: ${{ steps.meta-frontend.outputs.labels }}
+
+      - name: Build and push Backend Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile.backend
+          push: true
+          tags: ${{ steps.meta-backend.outputs.tags }}
+          labels: ${{ steps.meta-backend.outputs.labels }}
+
   deploy:
     runs-on: ubuntu-latest
+    needs: build-and-push
+    permissions:
+      contents: read
+      packages: read
+    
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Server (Install Docker & Dependencies)
+        uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Paramos si hay error
-            set -e
+            # Actualizar lista de paquetes
+            sudo apt-get update -y
+            
+            # Instalar Docker si no existe
+            if ! command -v docker &> /dev/null; then
+                echo "Docker no encontrado. Instalando..."
+                sudo apt-get install -y docker.io
+                sudo systemctl start docker
+                sudo systemctl enable docker
+                sudo usermod -aG docker $USER
+            else
+                echo "Docker ya está instalado."
+            fi
 
-            # Vamos al directorio (se asume que ya existe, explicado en tutorial)
-            cd /var/www/proyectonavidad
+            # Asegurar que la carpeta de la app existe
+            mkdir -p /home/${{ secrets.EC2_USER }}/app
 
-            # Actualizamos código
-            git pull origin main
+      - name: Copy docker-compose.prod.yml to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "docker-compose.prod.yml"
+          target: "/home/${{ secrets.EC2_USER }}/app"
 
-            # Reconstruimos y levantamos contenedores
-            # Usamos sudo si el usuario no está en el grupo docker
-            docker-compose down
-            docker-compose up -d --build
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v0.1.10
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.actor }}
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          envs: GITHUB_TOKEN,USERNAME
+          script: |
+            # Ir al directorio de la app
+            cd /home/${{ secrets.EC2_USER }}/app
+            
+            # Login en GHCR usando el token temporal del workflow
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u $USERNAME --password-stdin
+            
+            # Exportar prefijo de imagen
+            export IMAGE_PREFIX=ghcr.io/${{ github.repository }}
+            
+            # Pull de las nuevas imagenes
+            docker compose -f docker-compose.prod.yml pull
+            
+            # Levantar servicios
+            docker compose -f docker-compose.prod.yml up -d --remove-orphans
+            
+            # Limpiar imagenes viejas
+            docker image prune -f

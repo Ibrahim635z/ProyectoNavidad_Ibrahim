@@ -1,106 +1,81 @@
-# Guía de Despliegue GRATUITO (No VPS)
+# Guía de Despliegue Automatizado en AWS EC2 (Simplificado)
 
-Esta configuración te permite publicar tu web **sin pagar servidor**.
-
-### La Estrategia
-1.  **Backend (API + Base de Datos)**: Lo subiremos a **Render (Free Tier)**.
-2.  **Frontend (Web Visual)**: Lo subiremos a **Vercel** (El mejor hosting gratuito de frontend).
-3.  **Dominio**: Conectaremos tu dominio de IONOS a Vercel.
-
-> ⚠️ **Aviso sobre Datos**: En la versión gratuita de Render, la base de datos (`db.json`) se "reinicia" cada vez que subes código o el servidor se duerme por inactividad. Los usuarios nuevos que registres se borrarán tras un tiempo. Para un proyecto de clase ES PERFECTO, pero no para una empresa real.
+**¡Buenas noticias!** He optimizado el proceso para que **NO necesites generar tokens complejos**. El sistema ahora usa los permisos automáticos de GitHub para todo.
 
 ---
 
-## PASO 1: Subir tu Código a GitHub
-Asegúrate de que este proyecto está subido a tu GitHub y que el repositorio es **Público** (o privado, pero público es más fácil para empezar).
+## 📋 Prerrequisitos
+
+1.  **Cuenta de AWS Academy / Learner Lab**.
+2.  **Dominio en IONOS** (`pachangapp.es`).
+3.  **Repositorio en GitHub**.
 
 ---
 
-## PASO 2: Desplegar el Backend (Render)
+## 🛠️ Paso 1: Lanzar Instancia en AWS
 
-1.  Entra en [dashboard.render.com](https://dashboard.render.com/) y crea una cuenta (con tu GitHub).
-2.  Pulsa el botón **"New +"** y elige **"Web Service"**.
-3.  Selecciona la opción **"Build and deploy from a Git repository"** y dale a Next.
-4.  Busca tu repositorio (conecta tu cuenta si no sale) y dale a **"Connect"**.
-5.  **Configuración del Servicio:**
-    *   **Name:** `backend-pachangapp` (o lo que quieras).
-    *   **Branch:** Selecciona `feature/despliegue` (IMPORTANTE).
-    *   **Region:** Frankfurt (Germany) - Es la más cercana.
-    *   **Runtime:** **Docker** (Importante).
-    *   **Instance Type:** **Free**.
-6.  **Environment Variables (Variables de Entorno)**:
-    *   Baja hasta la sección "Advanced" > "Environment Variables".
-    *   Añade una clave:
-        *   Key: `PORT`
-        *   Value: `3008`
-    *   *(Esto es vital para que json-server funcione en Render)*.
-7.  **Docker Command**: Déjalo vacío, Render usará tu `Dockerfile` automáticamente (ya lo he renombrado por ti).
-8.  Dale a **"Create Web Service"**.
+1.  Entra en **AWS Console** -> **EC2** -> **Lanzar instancia**.
+2.  **Nombre**: `PachangApp-Server`.
+3.  **Imagen**: `Ubuntu Server 24.04 LTS` (o 22.04).
+4.  **Par de claves (Login)** - **MUY IMPORTANTE**:
+    *   Haz clic en "Crear nuevo par de claves".
+    *   Nombre: `pachangapp-key`.
+    *   Tipo: `RSA`.
+    *   Formato: `.pem` (para OpenSSH).
+    *   Al hacer clic en "Crear par de claves", **se descargará automáticamente un archivo `pachangapp-key.pem` a tu ordenador** (generalmente en la carpeta `Descargas`).
+    *   **⚠️ GUARDA ESTE ARCHIVO**: Es necesario para el siguiente paso.
+5.  **Configuración de red**:
+    *   Marca las casillas: "Permitir tráfico SSH", "Permitir tráfico HTTP", "Permitir tráfico HTTPS".
+6.  **Lanzar**.
 
-Tardará unos minutos. Cuando termine verás un tick verde y arriba a la izquierda la URL de tu API:
-👉 **Ejemplo:** `https://backend-pachangapp.onrender.com`
-
-**¡Copia esa URL!**
+### Asignar IP Fija (Elastic IP)
+1.  Menú lateral AWS -> **Red y seguridad -> Direcciones IP elásticas**.
+2.  "Asignar dirección IP elástica" -> "Asignar".
+3.  Selecciona la nueva IP -> Acción -> "Asociar dirección IP elástica".
+4.  Elige tu instancia y asocia.
+5.  **Copia esta IP Elástica** (ej. `34.220.x.x`).
 
 ---
 
-## PASO 3: Conectar el Frontend con el Backend
+## 🌐 Paso 2: Dominio (IONOS)
 
-Ahora que tienes URL del backend, dile a tu código dónde está.
-
-1.  Abre en tu ordenador el archivo `js/config.js`.
-2.  Busca la línea que dice:
-    ```javascript
-    const URL_BACKEND_RENDER = "PON_AQUI_TU_URL_DE_RENDER";
-    ```
-3.  Pega ahí tu URL real (sin barra final `/`, solo https://...).
-    *   Ejemplo: `const URL_BACKEND_RENDER = "https://backend-pachangapp.onrender.com";`
-4.  Guarda los cambios.
-5.  Sube los cambios a tu rama feature:
-    ```bash
-    git add .
-    git commit -m "Configurar URL de produccion"
-    git push origin feature/despliegue
-    ```
+1.  En IONOS, ve a **DNS** de `pachangapp.es`.
+2.  Edita el registro **A** (host `@`) para que apunte a tu **IP Elástica** de AWS.
+3.  Borra cualquier registro AAAA (IPv6) si existe.
 
 ---
 
-## PASO 4: Desplegar el Frontend (Vercel)
+## 🔐 Paso 3: Configuración de GitHub (Secreto Mágico)
 
-1.  Entra en [vercel.com](https://vercel.com/) y entra con GitHub.
-2.  Dale a **"Add New..."** > **"Project"**.
-3.  Importa tu repositorio de GitHub.
-4.  **Configuración:**
-    *   **Framework Preset:** Déjalo en "Other".
-    *   **Root Directory:** `./` (déjalo como está).
-    *   **Branch:** IMPORTANTE: En "Production Branch" o en el selector de ramas, asegúrate de elegir `feature/despliegue`.
-    *   **Build Command:** Déjalo vacío.
-    *   **Output Directory:** Déjalo vacío.
-5.  Dale a **"Deploy"**.
+Solo necesitas configurar 3 secretos en tu repositorio GitHub.
 
-En unos segundos, Vercel te dará una URL (ej. `proyecto-navidad.vercel.app`). ¡Tu web ya funciona!
+1.  Abre el archivo `.pem` que descargaste en el Paso 1 con el **Bloc de Notas**.
+2.  Copia **TODO** el contenido (desde `-----BEGIN...` hasta `...END-----`).
+3.  Ve a tu repositorio en GitHub -> **Settings** -> **Secrets and variables** -> **Actions**.
+4.  Añade estos 3 secretos ("New repository secret"):
+
+| Nombre Secreto | Valor a pegar |
+| :--- | :--- |
+| `EC2_HOST` | La **IP Elástica** de AWS (Paso 1). |
+| `EC2_USER` | `ubuntu` |
+| `EC2_SSH_KEY` | El contenido completo de tu archivo `.pem`. |
+
+**¡YA ESTÁ!** No necesitas ningún token personal. El código se encargará de todo.
 
 ---
 
-## PASO 5: Poner tu Dominio de IONOS
+## 🚀 Paso 4: Desplegar
 
-Para que no sea `.vercel.app`, sino `tudominio.com`.
+Simplemente sube tus cambios:
 
-1.  En el panel de tu proyecto en **Vercel**:
-    *   Ve a **Settings** > **Domains**.
-    *   Escribe tu dominio de IONOS (ej. `miproyecto.com`) y dale a **Add**.
-    *   Elige la opción recomendada (Añadir dominio).
-    *   Vercel te dará unos valores **DNS** (normalmente un Registro A `76.76.21.21`).
+```bash
+git add .
+git commit -m "Listo para despliegue automático"
+git push origin main
+```
 
-2.  En tu panel de **IONOS**:
-    *   Ve a **Dominios & SSL**.
-    *   Dale al engranaje ⚙️ de tu dominio > **DNS**.
-    *   Borra cualquier registro A antiguo.
-    *   Añade un nuevo Registro **A**:
-        *   Host: `@`
-        *   Valor: `76.76.21.21` (El que te dio Vercel).
-    *   Añade otro registro **CNAME** (si quieres `www`):
-        *   Host: `www`
-        *   Valor: `cname.vercel-dns.com`
+Ve a la pestaña **Actions** en GitHub y observa cómo se despliega solo.
 
-Espera unos minutos/horas y tu dominio mostrará tu web segura y gratis.
+*   El sistema instalará Docker automáticamente en tu servidor.
+*   Configurará la web y la base de datos.
+*   En unos minutos, tu web estará en `http://pachangapp.es` y la documentación en `http://pachangapp.es/documentacion`.

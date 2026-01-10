@@ -14,5 +14,11 @@ COPY db.json .
 # Exponemos el puerto 3008
 EXPOSE 3008
 
+# Permisos para el usuario node
+RUN chown -R node:node /app
+
+# Switch to non-root user
+USER node
+
 # Comando para iniciar el servidor (binding a 0.0.0.0 es necesario para Docker)
 CMD ["npx", "json-server", "--watch", "db.json", "--port", "3008", "--host", "0.0.0.0"]

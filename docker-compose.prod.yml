@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ${IMAGE_PREFIX}-backend:latest
+    container_name: backend-api
+    restart: always
+    restart: always
+    # Ports removed for security, access via Nginx proxy only
+    # ports:
+    #   - "3008:3008"
+    environment:
+      - NODE_ENV=production
+
+  frontend:
+    image: ${IMAGE_PREFIX}-frontend:latest
+    container_name: frontend-web
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend

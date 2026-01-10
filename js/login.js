@@ -19,7 +19,7 @@ const generarCaptcha = (elementoLabel) => {
     return num1 + num2;
 };
 
-// Función de validación de Login (sin cambios en la lógica principal, solo captcha)
+// Función de validación de Login
 const valida = async (objetoUsuario) => {
     const datosUsers = await fetch(`${API_URL}/users`).then(res => res.json());
     const usuarioEncontrado = datosUsers.find(usuario => usuario.email === objetoUsuario.email && usuario.password === objetoUsuario.password);
@@ -103,7 +103,6 @@ const main = () => {
         try {
             // *** OBTENER TODOS LOS USUARIOS ***
             // Hacemos fetch a /users para obtener la lista completa.
-            // Esto nos sirve para dos cosas:
             // 1. Comprobar si el email ya existe.
             // 2. Calcular cuál es el último ID para sumar 1.
             const usuariosExistentes = await fetch(`${API_URL}/users`).then(res => res.json());
@@ -115,7 +114,7 @@ const main = () => {
                 return;
             }
 
-            // *** CÁLCULO DEL NUEVO ID (AUTO-ALTA) ***
+            // *** CÁLCULO DEL NUEVO ID  ***
             // Buscamos el ID numérico más alto que exista actualmente.
             // 'reduce' recorre todos los usuarios quedándose con el valor más alto.
             // parseInt(user.id) convierte el string "24" a número 24 para poder comparar matemáticamente.
